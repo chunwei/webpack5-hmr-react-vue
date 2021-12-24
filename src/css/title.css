@@ -11,3 +11,7 @@
   background-image: url('../img/babel.png');
   background-size: cover;
 }
+.myIcon{
+  font-size: 36px!important;
+  color:lightseagreen;
+}

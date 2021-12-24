@@ -7,6 +7,7 @@ import VueApp from './VueApp.vue'
 import './css/title.css'
 import './css/title.less'
 import './image';
+import './font'
 
 if(module.hot){
   module.hot.accept('./title',()=>{
