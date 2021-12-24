@@ -36,13 +36,13 @@ module.exports={
         test:/\.css$/,
         use:[{
           loader:MiniCssExtractPlugin.loader,
-        },'css-loader','postcss-loader']
+        },{loader:'css-loader',options:{importLoaders:1}},'postcss-loader']
       },
       {
         test:/\.less$/,
         use:[{
           loader:MiniCssExtractPlugin.loader,
-        },'css-loader','postcss-loader','less-loader']
+        },{loader:'css-loader',options:{importLoaders:1}},'postcss-loader','less-loader']
       }
     ]
   },

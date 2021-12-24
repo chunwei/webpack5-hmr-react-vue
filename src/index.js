@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import ReactApp from './ReactApp.jsx';
 import Vue from 'vue';
 import VueApp from './VueApp.vue'
+import './css/title.css'
+import './css/title.less'
 
 if(module.hot){
   module.hot.accept('./title',()=>{
@@ -16,6 +18,7 @@ if(module.hot){
 (()=>{
   let elm=document.createElement('div')
   elm.id='reactiveElm'
+  elm.className='title bigTitle'
   elm.innerText=title
   document.body.appendChild(elm)
   elm=null
