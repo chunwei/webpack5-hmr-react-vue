@@ -6,6 +6,7 @@ import Vue from 'vue';
 import VueApp from './VueApp.vue'
 import './css/title.css'
 import './css/title.less'
+import './image';
 
 if(module.hot){
   module.hot.accept('./title',()=>{

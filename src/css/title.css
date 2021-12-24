@@ -4,3 +4,10 @@
   color: #12345678;
   /* background:blueviolet; */
 }
+
+.imgBg {
+  width: 100px;
+  height: 38px;
+  background-image: url('../img/babel.png');
+  background-size: cover;
+}

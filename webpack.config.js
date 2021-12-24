@@ -36,13 +36,25 @@ module.exports={
         test:/\.css$/,
         use:[{
           loader:MiniCssExtractPlugin.loader,
-        },{loader:'css-loader',options:{importLoaders:1}},'postcss-loader']
+        },{loader:'css-loader',options:{importLoaders:1,esModule:false}},'postcss-loader']
       },
       {
         test:/\.less$/,
         use:[{
           loader:MiniCssExtractPlugin.loader,
-        },{loader:'css-loader',options:{importLoaders:1}},'postcss-loader','less-loader']
+        },{loader:'css-loader',options:{importLoaders:1,esModule:false}},'postcss-loader','less-loader']
+      },
+      {
+        test:/\.(png|gif|svg|jpe?g)$/,
+        type:'asset',
+        generator:{
+          filename:'img/[name].[hash:6][ext]'
+        },
+        parser:{
+          dataUrlCondition:{
+            maxSize:8*1024
+          }
+        }
       }
     ]
   },
