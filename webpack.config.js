@@ -9,13 +9,25 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 module.exports={
   mode:'development',
   devtool:'source-map', // default 'eval'
+  resolve:{
+    extensions:['.ts','.jsx','...']
+  },
   output:{
     path:path.resolve(__dirname,'dist'),
     filename:'[name].[chunkhash:6].js',
     clean:true  // Clean the output directory before emit. since 5.20.0
   },
   devServer:{
-    hot:true // default true since webpack 4
+    hot:true, // default true since webpack 4
+    proxy:{
+      '/api':{
+        target:'https://api.github.com',
+        pathRewrite:{
+          "^/api":""
+        },
+        changeOrigin:true
+      }
+    }
   },
   module:{
     rules:[
@@ -91,5 +103,8 @@ module.exports={
     new MiniCssExtractPlugin({
       filename:'[name].css'
     })
-  ]
+  ],
+  experiments: {
+    topLevelAwait: true, // await
+  }
 }

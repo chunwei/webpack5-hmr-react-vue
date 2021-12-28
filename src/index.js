@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import ReactApp from './ReactApp.jsx';
 import Vue from 'vue';
 import VueApp from './VueApp.vue'
-import {sayHi,doPromis} from './hello.ts'
+import ClassA from './hello'
 import './css/title.css'
 import './css/title.less'
 import './image';
@@ -36,4 +36,12 @@ new Vue({
   render : h=>h(VueApp)
 }).$mount("#app")
 
-console.log(aaa)
+const classA= new ClassA()
+const r=await classA.doPromis()
+console.log(r)
+
+// test dev-server proxy
+const res=await fetch('/api/rate_limit',{
+  headers:{"Accept":"application/vnd.github.v3+json"}
+})
+console.log(await res.json())

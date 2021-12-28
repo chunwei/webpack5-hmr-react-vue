@@ -5,7 +5,11 @@ module.exports={
   }],
   ['@babel/preset-typescript'],
   ['@babel/preset-react',{
-    runtime:'automatic'
-  }]
-],plugins:['react-refresh/babel']
+      runtime:'automatic'
+    }]
+  ],
+  plugins:[
+    '@babel/plugin-syntax-top-level-await',
+    'react-refresh/babel'
+  ]
 }
