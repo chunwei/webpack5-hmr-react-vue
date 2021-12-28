@@ -1,33 +1,19 @@
 const path =require('path')
 const HtmlWebpackPlugin=require('html-webpack-plugin')
-const CopyPlugin = require("copy-webpack-plugin");
-const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const {DefinePlugin} =require('webpack')
 const VueLoaderPlugin =require('vue-loader/lib/plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
+const resolveApp=(relativePath)=>path.resolve(process.cwd(),relativePath) ;
 module.exports={
-  mode:'development',
-  devtool:'source-map', // default 'eval'
   resolve:{
-    extensions:['.ts','.jsx','...']
+    extensions:['.ts','.jsx','vue','...'],
+    // alias:{'@':resolveApp('./src')}
   },
   output:{
-    path:path.resolve(__dirname,'dist'),
+    path:resolveApp('./dist'),
     filename:'[name].[chunkhash:6].js',
     clean:true  // Clean the output directory before emit. since 5.20.0
-  },
-  devServer:{
-    hot:true, // default true since webpack 4
-    proxy:{
-      '/api':{
-        target:'https://api.github.com',
-        pathRewrite:{
-          "^/api":""
-        },
-        changeOrigin:true
-      }
-    }
   },
   module:{
     rules:[
@@ -88,21 +74,12 @@ module.exports={
       template:'./public/index.html',
       title:'Webpack5 Play'
     }),
+    new MiniCssExtractPlugin({
+      filename:'[name].css'
+    }),
     new DefinePlugin({
       'BASE_URL':'"./"'
     }),
-    new CopyPlugin({
-      patterns:[{
-        from:'./public',
-        globOptions:{
-          ignore:['**/index.html']
-        }
-      }]
-    }),
-    new ReactRefreshWebpackPlugin(),
-    new MiniCssExtractPlugin({
-      filename:'[name].css'
-    })
   ],
   experiments: {
     topLevelAwait: true, // await
