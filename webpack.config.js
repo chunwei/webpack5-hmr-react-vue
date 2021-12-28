@@ -62,6 +62,10 @@ module.exports={
         generator:{
           filename:'font/[name].[hash:3][ext]'
         }
+      },
+      {
+        test:/\.ts$/,
+        use:['ts-loader']
       }
     ]
   },
