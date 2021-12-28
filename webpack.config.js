@@ -8,6 +8,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports={
   mode:'development',
+  devtool:'source-map', // default 'eval'
   output:{
     path:path.resolve(__dirname,'dist'),
     filename:'[name].[chunkhash:6].js',
@@ -19,7 +20,7 @@ module.exports={
   module:{
     rules:[
       {
-        test:/\.(js|jsx)$/,
+        test:/\.(ts|js|jsx)$/,
         exclude:/node_modules/,
         use:['babel-loader']
       },
@@ -63,10 +64,10 @@ module.exports={
           filename:'font/[name].[hash:3][ext]'
         }
       },
-      {
-        test:/\.ts$/,
-        use:['ts-loader']
-      }
+      // {
+      //   test:/\.ts$/,
+      //   use:['ts-loader']
+      // }
     ]
   },
   plugins:[

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import ReactApp from './ReactApp.jsx';
 import Vue from 'vue';
 import VueApp from './VueApp.vue'
-import sayHi from './hello.ts'
+import {sayHi,doPromis} from './hello.ts'
 import './css/title.css'
 import './css/title.less'
 import './image';
@@ -35,3 +35,5 @@ ReactDOM.render(<ReactApp />,document.getElementById('root'));
 new Vue({
   render : h=>h(VueApp)
 }).$mount("#app")
+
+console.log(aaa)
